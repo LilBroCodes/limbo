@@ -20,7 +20,6 @@ class LimboProject:
         self.name: Optional[str] = None
         self.version: Optional[str] = None
         self.minecraft_version: Optional[str] = None
-        self.description: Optional[str] = None
         self.output: Optional[Output] = None
         self.author: Optional[str] = None
         self.pack_icon: Optional[str] = None

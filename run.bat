@@ -1,2 +1,0 @@
-c:\Users\LVG\AppData\Local\Programs\Python\Python312\python.exe main.py --verbose --delete ./test-project/test-project.lmproj
-REM c:\Users\LVG\AppData\Local\Programs\Python\Python312\python.exe main.py --delete ./test-project/test-project.lmproj

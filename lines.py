@@ -17,7 +17,7 @@ def find_python_files_with_line_counts(directory):
          continue
 
       for file in files:
-         if file.endswith('.py'):
+         if file.endswith('.py') and file != "lines.py":
             filepath = os.path.join(root, file)
             line_count = count_lines_in_file(filepath)
             python_files.append((file, line_count, filepath))

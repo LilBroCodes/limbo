@@ -1,0 +1,8 @@
+ENTITY {
+    METHOD setblock_offset(x;y;z;block)FFFS|setblock ~%1 ~%2 ~%3 %4
+    METHOD fill_offset(x1;y1;z1;x2;y1;z1;block)FFFFFFS|fill ~%1 ~%2 ~%3 ~%4 ~%5 ~%6 %7
+}
+GLOBAL {
+    METHOD setblock(x;y;z;block)FFFS|setblock ~%1 ~%2 ~%3 %4
+    METHOD fill(x1;y1;z1;x2;y1;z1;block)FFFFFFS|fill %1 %2 %3 %4 %5 %6 %7
+}

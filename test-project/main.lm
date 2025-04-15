@@ -1,10 +1,17 @@
 /* Raw Minecraft function. FUN definitions are just raw definitions with commands in them. */
-fun teleport_player(entity) {
+fun teleport_player() {
     // Directly maps to a Minecraft teleport command.
     tp entity ~ ~100 ~;
 }
 
 /* Limbo function. DEF definitions are the custom language Limbo implements. */
 def kill_on_grass() {
-    
+    let x1 = 10;
+    let y1 = 10;
+    let z1 = 10;
+    let x2 = -10;
+    let y2 = -10;
+    let z2 = -10;
+    let block = "minecraft:air";
+    fill(x1, y1, z1, x2, y2, z2, block);
 }
