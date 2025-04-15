@@ -1,27 +1,18 @@
-from typing import List, Optional
 import re
+from typing import List
+from mcfunc import Function
 
-class Function:
-    def __init__(self, name: str, params: Optional[List[str]], commands: List[str]):
-        self.name = name
-        self.params = params or []
-        self.commands = commands
-
-    def __repr__(self):
-        return f"Function(name={self.name!r}, params={self.params!r}, commands={self.commands!r})"
-
-def generate(file: str) -> List[Function]:
-    # Match 'fun function_name(param1, param2) { ... }' with optional whitespace
+def generate(filename: str) -> List[Function]:
+    functions = []
+    file_string = ""
+    with open(filename, "r") as file:
+        file_string = file.read()
+        
     pattern = re.compile(
-        r"fun\s+(\w+)\s*\(([^)]*)\)\s*{(.*?)}",
+        r"def\s+(\w+)\s*\(([^)]*)\)\s*{(.*?)}",
         re.DOTALL
     )
-
-    functions = []
-
-    with open(file, "r") as f:
-        file_string = f.read()
-
+    
     for match in pattern.finditer(file_string):
         name = match.group(1)
         param_str = match.group(2).strip()
@@ -33,5 +24,4 @@ def generate(file: str) -> List[Function]:
         # Split the body into individual non-empty lines, stripping each
         commands = [line.strip() if not line.strip().endswith(";") else line.strip()[:-1] for line in body.splitlines() if line.strip()]
         functions.append(Function(name, params, commands))
-
     return functions

@@ -3,6 +3,7 @@ import argparse
 import logging
 import shutil
 
+import lmfunc
 import mcfunc
 import project as proj
 import mcmeta
@@ -25,6 +26,7 @@ def generate(project_file: str, verbose: bool, delete: bool):
     data_path = os.path.join(target_path, "data")
     namespace_path = os.path.join(data_path, project.output.namespace)
     functions_path = os.path.join(namespace_path, "functions")
+    icon_path = os.path.join(project_path, project.pack_icon if project.pack_icon is not None else "icon.png")
 
     # Handle target deletion
     if delete and os.path.exists(target_path):
@@ -45,6 +47,21 @@ def generate(project_file: str, verbose: bool, delete: bool):
     with open(meta_path, "w", encoding="utf-8") as file:
         file.write(meta)
     logging.info(f"Wrote 'pack.mcmeta' to {meta_path}")
+    
+    if verbose:
+        logging.debug("Attempting to copy icon into generated datapack")
+    if os.path.exists(icon_path):
+        try:
+            with open(icon_path, "rb") as original:
+                data = original.read()
+                with open(os.path.join(target_path, "icon.png"), "wb") as file:
+                    file.write(data)
+        except Exception as e:
+            logging.error("Failed to move icon!" + "Use verbose mode for more details" if not verbose else "")
+            if verbose:
+                logging.debug(f"Icon move failed with exception: {e}")
+    else:
+        logging.warning("Icon file doesn't exist!" if not verbose else f"Icon file {icon_path} doesn't exist!")
 
     if verbose:
         logging.debug(f"pack.mcmeta content:\n{meta}")
@@ -62,7 +79,7 @@ def generate(project_file: str, verbose: bool, delete: bool):
         if verbose:
             logging.debug(f"Processing source file: {file_path}")
 
-        minecraft_functions = mcfunc.generate(file_path)
+        minecraft_functions = mcfunc.generate(file_path) + lmfunc.generate(file_path)
         logging.info(f"{file}: {len(minecraft_functions)} function(s) generated.")
 
         for func in minecraft_functions:

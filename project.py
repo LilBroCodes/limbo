@@ -5,6 +5,9 @@ class Output:
     def __init__(self, namespace: str, target_path: str):
         self.namespace = namespace
         self.target_path = target_path
+        
+    def valid(self):
+        return self.namespace and self.target_path and self.namespace.strip() != '' and self.target_path.strip() != ''
 
 class Predicate:
     def __init__(self, name: str, path: str):
@@ -38,6 +41,9 @@ def from_file(filename: str) -> LimboProject:
         lines = file.readlines()
 
     for line in lines:
+        if current_section == "output" and project.output and project.output.valid():
+            current_section = None
+        
         line = line.strip()
         if not line or line.startswith("#"):
             continue  # Skip empty and comment lines
