@@ -1,0 +1,24 @@
+name: "test-project"
+version: "1.0.0"
+minecraft_version: "1.20.1"
+description: "A test datapack created with Limbo"
+
+output:
+  namespace: "test_project"
+  target_path: "./output"
+
+author: "YourName"
+pack_icon: "./assets/pack.png"
+
+tags:
+  blocks:
+    - "custom_block_tag"
+  items:
+    - "custom_item_tag"
+  functions:
+    - "load"
+    - "tick"
+
+predicates:
+  - name: "custom_predicate"
+    path: "./predicates/custom.json"

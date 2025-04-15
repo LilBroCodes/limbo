@@ -1,0 +1,8 @@
+output
+.venv
+.idea
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+limbo-extension
