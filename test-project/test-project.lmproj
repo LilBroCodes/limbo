@@ -6,18 +6,18 @@ output:
   namespace: "test_project"
   target_path: "./output"
 
-author: "YourName"
+author: "LilBroCodes"
 pack_icon: "./assets/pack.png"
 
 tags:
   blocks:
-    - "custom_block_tag"
+    # - "custom_block_tag"
   items:
-    - "custom_item_tag"
+    # - "custom_item_tag"
   functions:
-    - "load"
-    - "tick"
+    # - "load"
+    # - "tick"
 
 predicates:
-  - name: "custom_predicate"
-    path: "./predicates/custom.json"
+  # - name: "custom_predicate"
+  #   path: "./predicates/custom.json"
