@@ -6,12 +6,34 @@ fun teleport_player() {
 
 /* Limbo function. DEF definitions are the custom language Limbo implements. */
 def kill_on_grass() {
-    let x1 = 10;
-    let y1 = 10;
-    let z1 = 10;
-    let x2 = -10;
-    let y2 = -10;
-    let z2 = -10;
-    let block = "minecraft:air";
-    fill(x1, y1, z1, x2, y2, z2, block);
+    let a = 10;
+    let b = 20;
+    if (a < b) {
+        say("A < B");
+    } else if (b == a) {
+        say("A = B");
+    } else {
+        say("B > A");
+    }
+
+    let i = 20;
+    while (i > 0) {
+        say("I: " + i);
+        i--;
+    }
+
+    let c = a + b;
+    a = a - 1;
+    a = -b;
+    c = a * b;
+    let d = c ** 2;
+    d *= 2;
+    d += 1;
+    d -= 3;
+    d++;
+    d--;
+
+    d /= 2;
+    let e = d / 2; # (Normal Division)
+    e = d // 2; # (Integer Division)
 }

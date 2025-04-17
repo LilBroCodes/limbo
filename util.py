@@ -1,8 +1,7 @@
-import json
 import logging
 import re
 from enum import Enum
-from typing import Optional, List
+from typing import List
 
 from colorlog import ColoredFormatter
 
