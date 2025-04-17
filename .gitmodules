@@ -1,0 +1,3 @@
+[submodule "limbo-compiler"]
+    path = limbo-compiler
+    url = git://github.com/LilBroCodes/limbo-compiler.git
